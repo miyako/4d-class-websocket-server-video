@@ -15,3 +15,9 @@ To allow access to camera on HTTP (other than localhost)
 * Safari: goto web inspector (same for iOS)
 
 ![](https://github.com/miyako/4d-class-websocket-server-video/assets/1725068/f0648095-f23f-40fa-bc56-e33a8b3f936a)
+
+![](https://github.com/miyako/4d-class-websocket-server-video/assets/1725068/e2f7967d-10d1-4410-9af4-4eba55eca28a)
+
+## Acknowledgements
+
+HTML, CSS, JS from [philnash/mediadevices-camera-selection](https://github.com/philnash/mediadevices-camera-selection)
