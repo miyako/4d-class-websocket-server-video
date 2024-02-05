@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon"/>
+  <title>&nbsp;</title>
+</head>
+<body>
+  <div class="chat-container">
+    <video id="videoElement" width="640" height="480" autoplay></video>
+  </div>
+  <script>
+    (function(){      
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const roomNumber = urlParams.get('room');
+      const room = roomNumber ? roomNumber : 1;
+      const urlwss="ws://127.0.0.1/cctv?room="+room;
+      const videoElement = document.getElementById('videoElement');
+      let ws;
+                 
+      function init(){
+        document.title = "room " + room;
+        
+        navigator.mediaDevices.getUserMedia({video: true})
+        .then((stream) => {
+          videoElement.srcObject = stream;
+        })
+        .catch((error) => {
+          console.error('Error accessing webcam:', error);
+        });
+        
+        videoElement.addEventListener('play', () => {
+          const sendFrame = () => {
+            if (videoElement.paused || videoElement.ended) {
+              return;
+            }
+        
+            const canvas = document.createElement('canvas');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+        
+            canvas.toBlob((blob) => {
+              ws.send(blob);
+            }, 'image/jpeg');
+        
+            setTimeout(sendFrame, 100); 
+          };
+        
+          sendFrame();
+        });
+        
+        if (ws){
+          ws.close();
+        }
+
+        ws = new WebSocket(urlwss);
+        ws.binaryType = 'blob';
+        
+        ws.addEventListener('close',function close(){
+          ws=null;
+        });
+
+      }
+      
+      init();
+          
+    })();  
+    </script>
+  </body>
+</html>    

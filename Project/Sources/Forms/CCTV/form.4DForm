@@ -1,0 +1,272 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 440,
+	"windowMinHeight": 440,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"events": [
+		"onLoad",
+		"onUnload",
+		"onPageChange"
+	],
+	"windowTitle": "",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"pages": {
+					"type": "tab",
+					"text": "Tab control",
+					"top": 5,
+					"left": 10,
+					"width": 510,
+					"height": 425,
+					"right": 520,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"labelsPlacement": "top",
+					"dataSourceTypeHint": "object",
+					"dataSource": "Form:C1466.pages",
+					"action": "gotoPage",
+					"bottom": 430
+				},
+				"rooms": {
+					"type": "listbox",
+					"left": 20,
+					"top": 40,
+					"width": 150,
+					"height": 380,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"listboxType": "collection",
+					"showHeaders": false,
+					"rowHeight": "40px",
+					"resizingMode": "legacy",
+					"focusable": true,
+					"sortable": false,
+					"selectionMode": "single",
+					"horizontalLineStroke": "transparent",
+					"verticalLineStroke": "transparent",
+					"sizingY": "grow",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "hidden",
+					"dataSource": "Form:C1466.rooms",
+					"textAlign": "left",
+					"verticalAlign": "middle",
+					"fontWeight": "bold",
+					"borderStyle": "none",
+					"method": "ObjectMethods/rooms.4dm",
+					"horizontalPadding": 10,
+					"alternateFill": "automaticAlternate",
+					"currentItemSource": "Form:C1466.currentRoom",
+					"currentItemPositionSource": "Form:C1466.currentRoomPosition",
+					"columns": [
+						{
+							"header": {
+								"text": "",
+								"name": "rooms.name.hdr"
+							},
+							"name": "rooms.name",
+							"footer": {
+								"name": "rooms.name.ftr",
+								"truncateMode": "none",
+								"fontWeight": "normal"
+							},
+							"resizable": false,
+							"enterable": false,
+							"truncateMode": "none",
+							"dataSource": "This:C1470.name"
+						}
+					]
+				}
+			}
+		},
+		{
+			"objects": {
+				"terminate.other": {
+					"type": "button",
+					"text": "terminate the current handler",
+					"top": 40,
+					"left": 60,
+					"width": 210,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"focusable": false,
+					"method": "ObjectMethods/terminate.other.4dm",
+					"visibility": "hidden"
+				},
+				"warning": {
+					"type": "text",
+					"text": "Another worker or dialog is already running a WebSocketServer instance",
+					"top": 103,
+					"left": 33,
+					"width": 467,
+					"height": 31,
+					"visibility": "hidden"
+				},
+				"frame": {
+					"type": "input",
+					"left": 181,
+					"top": 85,
+					"width": 329,
+					"height": 209,
+					"dataSource": "Form:C1466.frames[Form:C1466.currentRoom.name]",
+					"dataSourceTypeHint": "picture",
+					"pictureFormat": "proportionalTopLeft",
+					"contextMenu": "none",
+					"enterable": false,
+					"focusable": false,
+					"dragging": "none",
+					"dropping": "none",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"fill": "transparent",
+					"borderStyle": "none"
+				}
+			}
+		},
+		{
+			"objects": {
+				"terminate": {
+					"type": "button",
+					"text": "terminate",
+					"top": 40,
+					"left": 180,
+					"width": 90,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"focusable": false,
+					"method": "ObjectMethods/terminate.4dm"
+				},
+				"restart": {
+					"type": "button",
+					"text": "restart",
+					"top": 40,
+					"left": 280,
+					"width": 90,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"focusable": false,
+					"method": "ObjectMethods/restart.4dm"
+				},
+				"remoteAddress": {
+					"type": "input",
+					"left": 300,
+					"top": 70,
+					"width": 210,
+					"height": 17,
+					"dataSourceTypeHint": "object",
+					"enterable": false,
+					"dataSource": "Form:C1466.CCTV.connection.remoteAddress",
+					"focusable": false,
+					"contextMenu": "none",
+					"fill": "transparent",
+					"dragging": "none",
+					"dropping": "none",
+					"borderStyle": "none",
+					"right": 510,
+					"sizingX": "fixed",
+					"sizingY": "fixed"
+				},
+				"url": {
+					"type": "input",
+					"left": 300,
+					"top": 90,
+					"width": 210,
+					"height": 17,
+					"dataSourceTypeHint": "object",
+					"enterable": false,
+					"dataSource": "Form:C1466.CCTV.connection.url",
+					"focusable": false,
+					"contextMenu": "none",
+					"fill": "transparent",
+					"dragging": "none",
+					"dropping": "none",
+					"borderStyle": "none",
+					"right": 510,
+					"sizingX": "fixed",
+					"sizingY": "fixed"
+				},
+				"Remote Address:": {
+					"type": "text",
+					"text": "Remote Address:",
+					"top": 70,
+					"left": 175,
+					"width": 122,
+					"height": 16,
+					"fontWeight": "bold",
+					"textAlign": "right"
+				},
+				"URL:": {
+					"type": "text",
+					"text": "URL:",
+					"top": 90,
+					"left": 175,
+					"width": 122,
+					"height": 16,
+					"fontWeight": "bold",
+					"textAlign": "right"
+				},
+				"room": {
+					"type": "input",
+					"left": 300,
+					"top": 110,
+					"width": 210,
+					"height": 17,
+					"dataSourceTypeHint": "object",
+					"enterable": false,
+					"dataSource": "Form:C1466.CCTV.connection.room",
+					"focusable": false,
+					"contextMenu": "none",
+					"fill": "transparent",
+					"dragging": "none",
+					"dropping": "none",
+					"borderStyle": "none",
+					"right": 510,
+					"sizingX": "fixed",
+					"sizingY": "fixed"
+				},
+				"Room:": {
+					"type": "text",
+					"text": "Room:",
+					"top": 110,
+					"left": 175,
+					"width": 122,
+					"height": 16,
+					"fontWeight": "bold",
+					"textAlign": "right"
+				}
+			}
+		}
+	],
+	"geometryStamp": 568,
+	"menuBar": "Barre #1",
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {},
+			"nornal": {
+				"objects": [
+					"pages"
+				]
+			}
+		}
+	},
+	"width": 530,
+	"height": 440
+}
