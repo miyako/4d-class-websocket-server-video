@@ -16,7 +16,7 @@ To allow access to camera on HTTP (other than localhost)
 
 ![](https://github.com/miyako/4d-class-websocket-server-video/assets/1725068/f0648095-f23f-40fa-bc56-e33a8b3f936a)
 
-![](https://github.com/miyako/4d-class-websocket-server-video/assets/1725068/e2f7967d-10d1-4410-9af4-4eba55eca28a)
+![](https://github.com/miyako/4d-class-websocket-server-video/assets/1725068/46f231d3-43a2-4ee7-8db6-c2cb627397a2)
 
 ## Acknowledgements
 
