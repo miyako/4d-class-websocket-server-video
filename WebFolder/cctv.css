@@ -1,0 +1,23 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family:'Roboto','Hiragino Sans','Meiryo','Hiragino Kaku Gothic ProN',sans-serif;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+video {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 0 auto;
+}
