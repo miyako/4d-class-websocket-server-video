@@ -5,3 +5,9 @@
 
 # 4d-class-websocket-server-video
 Classes to implement a CCTV application based on WebSockets.
+
+## Notes 
+
+To allow access to camera on HTTP (other than localhost)
+
+* Google Chrome: goto `chrome://flags/#unsafely-treat-insecure-origin-as-secure`, enable, add `http:{address}`
