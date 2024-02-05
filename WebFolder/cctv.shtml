@@ -83,7 +83,7 @@
           }
         });
         
-        if (inputSources.children.length != 0) {
+        if ((inputSources.children.length != 0) && (currentStream == null)){
           selectSource(inputSources.firstChild.value);
         }
         
@@ -95,7 +95,7 @@
         });
       }    
           
-      function selectSource(deviceId) {
+      function selectSource(deviceId, noUpdate) {
         const videoConstraints = {};
         videoConstraints.deviceId = { exact: deviceId };
         const constraints = {
@@ -106,7 +106,9 @@
         .then((stream) => {
           currentStream = stream;
           videoElement.srcObject = stream;
+          return navigator.mediaDevices.enumerateDevices();
         })
+        .then(noUpdate ? null : gotDevices)
         .catch((error) => {
           console.error('Error accessing webcam:', error);
         });
@@ -116,7 +118,7 @@
         if (typeof currentStream !== 'undefined') {
           stopMediaTracks(currentStream);
         }
-        selectSource(event.currentTarget.value);
+        selectSource(event.currentTarget.value, true);
       });  
             
     })();  
