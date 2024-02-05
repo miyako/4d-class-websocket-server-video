@@ -7,7 +7,18 @@
   <title>&nbsp;</title>
 </head>
 <body>
-  <div class="chat-container">
+  <!--#4dcode 
+    ARRAY TEXT($names; 0)
+    ARRAY TEXT($values; 0)
+    WEB GET HTTP HEADER($names; $values)
+    var $room; $host : Text
+    var $i : Integer
+    $i:=Find in array($names; "Host")
+    If ($i#-1)
+      $host:=$values{$i}
+    End if 
+  -->  
+  <div class="cctv-container">
     <video id="videoElement" width="640" height="480" autoplay></video>
   </div>
   <script>
@@ -16,7 +27,7 @@
       const urlParams = new URLSearchParams(queryString);
       const roomNumber = urlParams.get('room');
       const room = roomNumber ? roomNumber : 1;
-      const urlwss="ws://127.0.0.1/cctv?room="+room;
+      const urlwss="ws://$4DHTML($host)/cctv?room="+room;
       const videoElement = document.getElementById('videoElement');
       let ws;
                  
@@ -46,7 +57,7 @@
             canvas.toBlob((blob) => {
               ws.send(blob);
             }, 'image/jpeg');
-        
+                    
             setTimeout(sendFrame, 100); 
           };
         
